@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Models.Productos.views import GeneralForms
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', GeneralForms.home, name='home'),
+    path('rm/', GeneralForms.indexmarca, name='registrarmarca'),
+    path('gm/', GeneralForms.procesarmarca, name='guardarmarca'),
+    path('lm/', GeneralForms.listarmarcas, name='listarmarca'),
+    path('em/', GeneralForms.editarmarca, name='editarmarca'),
+    path('am/', GeneralForms.actualizarmarca, name='actualizarmarca'),
+    path('em/', GeneralForms.editarmarca, name='eliminarmarca'),
+
 ]

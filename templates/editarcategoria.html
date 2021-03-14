@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            Error al guardar formulario
+        </div>
+    {% endif %}
+
+    <h1>Actualizacion de Categoria</h1>
+
+    <form class="container" action="{% url 'actualizarcategoria' categoria.id %}" method="POST" >
+        {% csrf_token %}
+
+        {% if mensaje %}
+            <div class="alert alert-success" role="alert">
+              Categoria actualizada exitosamente
+            </div>
+        {% endif %}
+
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Actualizar registro</button>
+        <a class="btn btn-warning" href="{% url 'listarcategoria' %}">Cancelar</a>
+    </form>
+
+{% endblock %}
